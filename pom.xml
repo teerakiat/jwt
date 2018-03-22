@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>th.co.itmx.common</groupId>
+    <artifactId>jwt</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+<dependencies>
+    <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
+    <dependency>
+        <groupId>com.nimbusds</groupId>
+        <artifactId>nimbus-jose-jwt</artifactId>
+        <version>4.39</version>
+    </dependency>
+</dependencies>
+    <repositories>
+        <repository>
+            <id>nimbus-jose-jwt</id>
+            <name>nimbus jose repository</name>
+            <url>https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt</url>
+        </repository>
+    </repositories>
+</project>
