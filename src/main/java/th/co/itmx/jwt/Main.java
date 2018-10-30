@@ -7,6 +7,7 @@ public class Main {
 
 //        SignWithRSA.sign("Yeah, mother god RSA");
 //        EncryptWithRSA.encrypt("Test");
-        SignAndEncryptWithRSA.SignAndEncrypt("Both are sign and encrypt");
+//        SignAndEncryptWithRSA.SignAndEncrypt("Both are sign and encrypt");
+        SignWithRSA.sign();
     }
 }

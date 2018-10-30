@@ -16,9 +16,7 @@ import java.security.KeyStore;
 import java.security.cert.X509Certificate;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.UUID;
 
 public class SignAndEncryptWithRSA {
     public static void SignAndEncrypt(String content) throws Exception{
@@ -30,7 +28,7 @@ public class SignAndEncryptWithRSA {
 
         X509Certificate cert = X509CertUtils.parse(x509Cert);
 
-        KeyStore keyStore = SignWithRSA.loadKeyStore(privateKeyFileName, "test123".toCharArray());
+        KeyStore keyStore = SignWithRSA.loadKeyStorePkcs12(privateKeyFileName, "test123".toCharArray());
 
         final String alias = keyStore.aliases().nextElement(); // Select the first entry in the key store
 //        System.out.println(alias);

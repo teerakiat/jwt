@@ -31,7 +31,7 @@ public class EncryptWithRSA {
 
         X509Certificate cert = X509CertUtils.parse(x509Cert);
 
-        KeyStore keyStore = SignWithRSA.loadKeyStore(privateKeyFileName, "test123".toCharArray());
+        KeyStore keyStore = SignWithRSA.loadKeyStorePkcs12(privateKeyFileName, "test123".toCharArray());
 
         final String alias = keyStore.aliases().nextElement(); // Select the first entry in the key store
 //        System.out.println(alias);
