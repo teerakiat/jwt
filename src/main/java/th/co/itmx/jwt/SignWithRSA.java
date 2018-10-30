@@ -1,9 +1,6 @@
 package th.co.itmx.jwt;
 
-import com.nimbusds.jose.JWSAlgorithm;
-import com.nimbusds.jose.JWSHeader;
-import com.nimbusds.jose.JWSSigner;
-import com.nimbusds.jose.JWSVerifier;
+import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.RSASSASigner;
 import com.nimbusds.jose.crypto.RSASSAVerifier;
 import com.nimbusds.jose.util.X509CertUtils;
@@ -27,7 +24,7 @@ import java.util.UUID;
 
 public class SignWithRSA {
 
-    public static void sign() throws Exception{
+    public static void sign() throws Exception {
         String x509CertFileName = "D:\\tmp\\ITMXSIGN000-20180917.cer";
         String privateKeyFileName = "D:\\tmp\\000-20180917-itmx_signing-key.der";
 
@@ -49,7 +46,7 @@ public class SignWithRSA {
         KeyFactory kf = KeyFactory.getInstance("RSA");
         byte[] priKeyBytes = Files.readAllBytes(new File(privateKeyFileName).toPath());
         PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(priKeyBytes);
-        PrivateKey privateKey =  kf.generatePrivate(spec);
+        PrivateKey privateKey = kf.generatePrivate(spec);
         JWSSigner signer = new RSASSASigner(privateKey);
 
 // Prepare JWT with claims set
@@ -60,10 +57,13 @@ public class SignWithRSA {
                 .jwtID(UUID.randomUUID().toString())
                 .build();
 
-
         SignedJWT signedJWT = new SignedJWT(
-                new JWSHeader(JWSAlgorithm.RS512),
+                new JWSHeader(JWSAlgorithm.RS512, JOSEObjectType.JWT, null, null, null, null, null, null, null, null, null, null, null),
                 claimsSet);
+//
+//        SignedJWT signedJWT = new SignedJWT(
+//                new JWSHeader(JWSAlgorithm.RS512),
+//                claimsSet);
 
         signedJWT.sign(signer);
 
@@ -74,6 +74,7 @@ public class SignWithRSA {
         //verify signature
 
 // On the consumer side, parse the JWS and verify its RSA signature
+
         signedJWT = SignedJWT.parse(s);
 
         JWSVerifier verifier = new RSASSAVerifier((RSAPublicKey) cert.getPublicKey());
