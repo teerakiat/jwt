@@ -52,7 +52,7 @@ public class SignWithRSA {
 // Prepare JWT with claims set
         JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
                 .issuer("000")
-                .audience("065")
+                .audience("014")
                 .expirationTime(new Date(new Date().getTime() + 60 * 1000))
                 .jwtID(UUID.randomUUID().toString())
                 .build();
@@ -60,10 +60,6 @@ public class SignWithRSA {
         SignedJWT signedJWT = new SignedJWT(
                 new JWSHeader(JWSAlgorithm.RS512, JOSEObjectType.JWT, null, null, null, null, null, null, null, null, null, null, null),
                 claimsSet);
-//
-//        SignedJWT signedJWT = new SignedJWT(
-//                new JWSHeader(JWSAlgorithm.RS512),
-//                claimsSet);
 
         signedJWT.sign(signer);
 
